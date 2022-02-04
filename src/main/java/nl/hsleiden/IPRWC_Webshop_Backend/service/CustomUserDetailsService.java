@@ -1,0 +1,36 @@
+package nl.hsleiden.IPRWC_Webshop_Backend.service;
+
+import nl.hsleiden.IPRWC_Webshop_Backend.dao.UserDao;
+import nl.hsleiden.IPRWC_Webshop_Backend.model.Role;
+import nl.hsleiden.IPRWC_Webshop_Backend.model.User;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.stereotype.Service;
+
+import java.util.ArrayList;
+import java.util.Collection;
+
+@Service
+public class CustomUserDetailsService implements UserDetailsService {
+    @Autowired
+    private UserDao userDao;
+
+    @Override
+    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+        User user = this.userDao.get(username);
+        Collection<GrantedAuthority> authorities = getAuthorities(user);
+        return new org.springframework.security.core.userdetails.User(user.getEmail(), user.getPassword(), authorities);
+    }
+
+    private Collection<GrantedAuthority> getAuthorities(User user){
+        Collection<GrantedAuthority> authorities = new ArrayList<>();
+        for(Role role : user.getRole()){
+            authorities.add(new SimpleGrantedAuthority(role.getRoleName().toUpperCase()));
+        }
+        return authorities;
+    }
+}
