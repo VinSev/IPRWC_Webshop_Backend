@@ -11,6 +11,7 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.util.ArrayList;
 import java.util.Collection;
 
@@ -20,6 +21,7 @@ public class CustomUserDetailsService implements UserDetailsService {
     private UserDao userDao;
 
     @Override
+    @Transactional
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         User user = this.userDao.get(username);
         Collection<GrantedAuthority> authorities = getAuthorities(user);
