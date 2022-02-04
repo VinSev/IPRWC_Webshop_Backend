@@ -10,6 +10,7 @@ import javax.annotation.PostConstruct;
 
 @RestController
 @RequestMapping(value = "/users")
+@CrossOrigin
 public class UserController {
     @Autowired
     private UserService userService;
