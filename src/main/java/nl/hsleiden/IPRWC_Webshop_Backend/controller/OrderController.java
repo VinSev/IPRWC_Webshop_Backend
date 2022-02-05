@@ -17,7 +17,6 @@ public class OrderController {
     @Autowired
     private OrderService orderService;
 
-    @PreAuthorize("isAuthenticated()")
     @GetMapping
     @ResponseStatus(HttpStatus.OK)
     @ResponseBody
@@ -25,7 +24,6 @@ public class OrderController {
         return this.orderService.getAll();
     }
 
-    @PreAuthorize("isAuthenticated()")
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     @ResponseBody
@@ -33,7 +31,6 @@ public class OrderController {
         this.orderService.create(order);
     }
 
-    @PreAuthorize("isAuthenticated()")
     @PutMapping
     @ResponseStatus(HttpStatus.OK)
     @ResponseBody
@@ -41,7 +38,6 @@ public class OrderController {
         this.orderService.update(order);
     }
 
-    @PreAuthorize("isAuthenticated()")
     @DeleteMapping
     @ResponseStatus(HttpStatus.OK)
     @ResponseBody
