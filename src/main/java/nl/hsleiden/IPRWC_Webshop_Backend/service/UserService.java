@@ -5,11 +5,9 @@ import nl.hsleiden.IPRWC_Webshop_Backend.dao.UserDao;
 import nl.hsleiden.IPRWC_Webshop_Backend.model.Role;
 import nl.hsleiden.IPRWC_Webshop_Backend.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import javax.naming.NameAlreadyBoundException;
 import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;

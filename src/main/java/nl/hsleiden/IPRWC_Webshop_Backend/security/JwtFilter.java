@@ -1,8 +1,6 @@
 package nl.hsleiden.IPRWC_Webshop_Backend.security;
 
-import io.jsonwebtoken.ExpiredJwtException;
 import nl.hsleiden.IPRWC_Webshop_Backend.service.CustomUserDetailsService;
-import nl.hsleiden.IPRWC_Webshop_Backend.service.JwtService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.lang.NonNull;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;

@@ -1,6 +1,6 @@
 package nl.hsleiden.IPRWC_Webshop_Backend.dao;
 
-import nl.hsleiden.IPRWC_Webshop_Backend.dao.Repository.RoleRepository;
+import nl.hsleiden.IPRWC_Webshop_Backend.dao.repository.RoleRepository;
 import nl.hsleiden.IPRWC_Webshop_Backend.model.Role;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;

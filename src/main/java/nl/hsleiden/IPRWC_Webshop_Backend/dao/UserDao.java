@@ -1,6 +1,6 @@
 package nl.hsleiden.IPRWC_Webshop_Backend.dao;
 
-import nl.hsleiden.IPRWC_Webshop_Backend.dao.Repository.UserRepository;
+import nl.hsleiden.IPRWC_Webshop_Backend.dao.repository.UserRepository;
 import nl.hsleiden.IPRWC_Webshop_Backend.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;

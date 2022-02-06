@@ -1,8 +1,8 @@
 package nl.hsleiden.IPRWC_Webshop_Backend.dao;
 
-import nl.hsleiden.IPRWC_Webshop_Backend.dao.Repository.OrderItemRepository;
-import nl.hsleiden.IPRWC_Webshop_Backend.dao.Repository.OrderRepository;
-import nl.hsleiden.IPRWC_Webshop_Backend.dao.Repository.ProductRepository;
+import nl.hsleiden.IPRWC_Webshop_Backend.dao.repository.OrderItemRepository;
+import nl.hsleiden.IPRWC_Webshop_Backend.dao.repository.OrderRepository;
+import nl.hsleiden.IPRWC_Webshop_Backend.dao.repository.ProductRepository;
 import nl.hsleiden.IPRWC_Webshop_Backend.model.Order;
 import nl.hsleiden.IPRWC_Webshop_Backend.model.OrderItem;
 import nl.hsleiden.IPRWC_Webshop_Backend.model.Product;
