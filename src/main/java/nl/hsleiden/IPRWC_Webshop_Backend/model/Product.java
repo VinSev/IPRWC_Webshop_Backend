@@ -21,6 +21,8 @@ public class Product implements Serializable {
     private float price;
     @NotBlank
     private String imageLink;
+    @Transient
+    private int amount;
 
     public Long getId() {
         return id;
@@ -40,5 +42,13 @@ public class Product implements Serializable {
 
     public String getImageLink() {
         return imageLink;
+    }
+
+    public int getAmount() {
+        return amount;
+    }
+
+    public void setAmount(int amount) {
+        this.amount = amount;
     }
 }
