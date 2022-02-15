@@ -37,7 +37,7 @@ public interface OrderRepository extends JpaRepository<Order, Long> {
     @Query(value = "UPDATE product SET user_id = :userId, street_name = :streetName, house_number = :houseNumber, postcode = :postcode, place_name = :placeName WHERE id = :id",
             nativeQuery = true)
     void update(@Param("id") Long id,
-                @Param("userId") Long userid,
+                @Param("userId") String userid,
                 @Param("streetName") String streetName,
                 @Param("houseNumber") int houseNumber,
                 @Param("postcode") String postcode,

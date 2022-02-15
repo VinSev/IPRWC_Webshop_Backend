@@ -27,14 +27,20 @@ public class OrderService {
     }
 
     public void create(Order order) {
+        String email = SecurityContextHolder.getContext().getAuthentication().getName();
+        order.setUserId(email);
         this.orderDAO.create(order);
     }
 
     public void update(Order order) {
+        String email = SecurityContextHolder.getContext().getAuthentication().getName();
+        order.setUserId(email);
         this.orderDAO.update(order);
     }
 
     public void delete(Order order) {
+        String email = SecurityContextHolder.getContext().getAuthentication().getName();
+        order.setUserId(email);
         this.orderDAO.delete(order);
     }
 }
