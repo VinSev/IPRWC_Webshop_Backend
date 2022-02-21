@@ -38,7 +38,6 @@ public class OrderDao implements Dao<Order, Long> {
     @Override
     @Transactional
     public Order create(Order order) {
-        System.out.println(order.getUserId());
         this.orderRepository.saveAndFlush(order);
         for (Product product : order.getProducts()) {
             this.orderItemRepository.save(new OrderItem(order.getId(), product.getId(), product.getAmount()));
