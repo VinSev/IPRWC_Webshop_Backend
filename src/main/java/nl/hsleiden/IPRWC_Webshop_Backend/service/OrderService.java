@@ -14,8 +14,7 @@ public class OrderService {
     private OrderDao orderDAO;
 
     public List<Order> getAll() {
-        String email = SecurityContextHolder.getContext().getAuthentication().getName();
-        List<Order> orders = this.orderDAO.getAllFromUser(email);
+        List<Order> orders = this.orderDAO.getAllFromUser(getUserId());
         for (Order order : orders) {
             order.setProducts(this.orderDAO.getOrderItems(order.getId()));
         }
@@ -27,20 +26,21 @@ public class OrderService {
     }
 
     public void create(Order order) {
-        String email = SecurityContextHolder.getContext().getAuthentication().getName();
-        order.setUserId(email);
+        order.setUserId(getUserId());
         this.orderDAO.create(order);
     }
 
     public void update(Order order) {
-        String email = SecurityContextHolder.getContext().getAuthentication().getName();
-        order.setUserId(email);
+        order.setUserId(getUserId());
         this.orderDAO.update(order);
     }
 
     public void delete(Order order) {
-        String email = SecurityContextHolder.getContext().getAuthentication().getName();
-        order.setUserId(email);
+        order.setUserId(getUserId());
         this.orderDAO.delete(order);
+    }
+
+    private String getUserId() {
+        return SecurityContextHolder.getContext().getAuthentication().getName();
     }
 }

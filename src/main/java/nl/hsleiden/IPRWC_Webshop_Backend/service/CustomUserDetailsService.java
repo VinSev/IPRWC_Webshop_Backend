@@ -21,9 +21,13 @@ public class CustomUserDetailsService implements UserDetailsService {
     private UserDao userDao;
 
     @Override
-    @Transactional
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        User user = this.userDao.get(username);
+        return loadUserByEmail(username);
+    }
+
+    @Transactional
+    public UserDetails loadUserByEmail(String email) throws UsernameNotFoundException {
+        User user = this.userDao.get(email);
         Collection<GrantedAuthority> authorities = getAuthorities(user);
         return new org.springframework.security.core.userdetails.User(user.getEmail(), user.getPassword(), authorities);
     }

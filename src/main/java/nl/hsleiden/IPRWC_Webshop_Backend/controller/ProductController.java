@@ -36,7 +36,6 @@ public class ProductController {
     @ResponseStatus(HttpStatus.CREATED)
     @ResponseBody
     public void post(@Valid @RequestBody Product product) {
-        System.out.println(product.getName());
         this.productService.create(product);
     }
 
