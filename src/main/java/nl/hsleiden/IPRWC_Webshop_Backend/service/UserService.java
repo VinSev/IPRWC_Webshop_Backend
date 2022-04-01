@@ -39,6 +39,14 @@ public class UserService {
         adminRoles.add(adminRole);
         adminUser.setRole(adminRoles);
         this.userDao.create(adminUser);
+
+        User normalUser = new User();
+        normalUser.setEmail("user@pass");
+        normalUser.setPassword(getEncodedPassword("user@pass"));
+        Set<Role> normalRoles = new HashSet<>();
+        normalRoles.add(userRole);
+        normalUser.setRole(normalRoles);
+        this.userDao.create(normalUser);
     }
 
     public User register(User user) {
@@ -60,6 +68,6 @@ public class UserService {
     }
 
     private boolean emailAlreadyExists(String email) {
-        return Objects.equals(this.userDao.get(email).getEmail(), email);
+        return this.userDao.exists(email);
     }
 }

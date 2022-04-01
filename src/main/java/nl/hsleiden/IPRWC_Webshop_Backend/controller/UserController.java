@@ -1,6 +1,7 @@
 package nl.hsleiden.IPRWC_Webshop_Backend.controller;
 
 import nl.hsleiden.IPRWC_Webshop_Backend.model.User;
+import nl.hsleiden.IPRWC_Webshop_Backend.model.UserRequest;
 import nl.hsleiden.IPRWC_Webshop_Backend.model.UserResponse;
 import nl.hsleiden.IPRWC_Webshop_Backend.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,6 +9,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.PostConstruct;
+import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -25,8 +27,10 @@ public class UserController {
     @PostMapping({"/register"})
     @ResponseStatus(HttpStatus.ACCEPTED)
     @ResponseBody
-    public UserResponse register(@RequestBody User user) {
-        user = userService.register(user);
-        return new UserResponse(user.getEmail(), List.of("User"));
+    public UserResponse register(@RequestBody UserRequest userRequest) {
+        User user = userService.register(new User(userRequest.getEmail(), userRequest.getPassword()));
+        List<String> roles = new ArrayList<>();
+        user.getRole().forEach(role -> roles.add(role.getRoleName()));
+        return new UserResponse(user.getEmail(), roles);
     }
 }

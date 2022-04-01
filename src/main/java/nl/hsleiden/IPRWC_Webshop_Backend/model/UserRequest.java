@@ -1,6 +1,6 @@
 package nl.hsleiden.IPRWC_Webshop_Backend.model;
 
-public class JwtRequest {
+public class UserRequest {
     private String email;
     private String password;
 

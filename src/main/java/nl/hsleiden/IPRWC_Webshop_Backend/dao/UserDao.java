@@ -36,4 +36,8 @@ public class UserDao implements Dao<User, String> {
     public void delete(User user) {
         this.repository.delete(user);
     }
+
+    public boolean exists(String email) {
+        return this.repository.existsById(email);
+    }
 }

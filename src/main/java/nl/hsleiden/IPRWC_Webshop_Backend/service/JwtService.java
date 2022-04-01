@@ -1,7 +1,7 @@
 package nl.hsleiden.IPRWC_Webshop_Backend.service;
 
 import nl.hsleiden.IPRWC_Webshop_Backend.dao.UserDao;
-import nl.hsleiden.IPRWC_Webshop_Backend.model.JwtRequest;
+import nl.hsleiden.IPRWC_Webshop_Backend.model.UserRequest;
 import nl.hsleiden.IPRWC_Webshop_Backend.model.JwtResponse;
 import nl.hsleiden.IPRWC_Webshop_Backend.model.User;
 import nl.hsleiden.IPRWC_Webshop_Backend.model.UserResponse;
@@ -24,8 +24,8 @@ public class JwtService {
     @Autowired
     private UserDao userDao;
 
-    public JwtResponse createJwtToken(JwtRequest jwtRequest) {
-        String email = jwtRequest.getEmail();
+    public JwtResponse createJwtToken(UserRequest userRequest) {
+        String email = userRequest.getEmail();
 
         UserDetails userDetails = loadUserByEmail(email);
         String newGeneratedToken = jwtUtil.generateToken(userDetails.getUsername());
