@@ -8,7 +8,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.PostConstruct;
-import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -28,8 +27,6 @@ public class UserController {
     @ResponseBody
     public UserResponse register(@RequestBody User user) {
         user = userService.register(user);
-        List<String> roles = new ArrayList<>();
-        user.getRole().forEach(role -> roles.add(role.getRoleName()));
-        return new UserResponse(user.getEmail(), roles);
+        return new UserResponse(user.getEmail(), List.of("User"));
     }
 }
