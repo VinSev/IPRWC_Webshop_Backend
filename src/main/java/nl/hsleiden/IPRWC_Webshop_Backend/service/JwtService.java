@@ -4,6 +4,7 @@ import nl.hsleiden.IPRWC_Webshop_Backend.dao.UserDao;
 import nl.hsleiden.IPRWC_Webshop_Backend.model.JwtRequest;
 import nl.hsleiden.IPRWC_Webshop_Backend.model.JwtResponse;
 import nl.hsleiden.IPRWC_Webshop_Backend.model.User;
+import nl.hsleiden.IPRWC_Webshop_Backend.model.UserResponse;
 import nl.hsleiden.IPRWC_Webshop_Backend.security.JwtUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -11,7 +12,9 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @Service
@@ -28,7 +31,9 @@ public class JwtService {
         String newGeneratedToken = jwtUtil.generateToken(userDetails.getUsername());
 
         User user = userDao.get(email);
-        return new JwtResponse(user, newGeneratedToken);
+        List<String> roles = new ArrayList<>();
+        user.getRole().forEach(role -> roles.add(role.getRoleName()));
+        return new JwtResponse(new UserResponse(user.getEmail(), roles), newGeneratedToken);
     }
 
     public UserDetails loadUserByEmail(String email) throws UsernameNotFoundException {

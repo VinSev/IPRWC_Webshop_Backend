@@ -1,19 +1,19 @@
 package nl.hsleiden.IPRWC_Webshop_Backend.model;
 
 public class JwtResponse {
-    private User user;
+    private UserResponse user;
     private String token;
 
-    public JwtResponse(User user, String token) {
+    public JwtResponse(UserResponse user, String token) {
         this.user = user;
         this.token = token;
     }
 
-    public User getUser() {
+    public UserResponse getUser() {
         return user;
     }
 
-    public void setUser(User user) {
+    public void setUser(UserResponse user) {
         this.user = user;
     }
 
